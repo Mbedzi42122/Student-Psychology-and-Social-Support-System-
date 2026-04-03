@@ -20,7 +20,7 @@
   /* HEADER */
   .header {
     background: white;
-    padding: 15px 0;
+    padding: 8px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
   
@@ -89,11 +89,14 @@
   }
   
   /* HERO */
-  .hero {
+  /* HERO TRANSITION */
+.hero {
     background: url("img/Background1.png") center/cover no-repeat;
     color: white;
     padding: 100px 0;
-  }
+    transition: background-image 1s ease-in-out;
+}
+
   
   .hero-content {
     display: flex;
@@ -140,6 +143,30 @@
     color: white;               /* text changes to white */
     transform: scale(1.05);
     border-color: #d18a53;      /* slightly darker border */
+}
+
+/* DOTS */
+.hero-dots {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: white;
+    opacity: 0.5;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* ACTIVE DOT */
+.dot.active {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    background: #e4aa7a;
 }
   
   /* FEATURES */
