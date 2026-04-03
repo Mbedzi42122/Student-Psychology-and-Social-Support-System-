@@ -129,12 +129,50 @@
       </form>
   
       <p class="signup-text">
-        Don't have an account? <a href="#">Register</a>
+        Don't have an account? <a href="#" id="openSignup">Sign up</a>
       </p>
   
     </div>
   </div>
 
+  <!-- REGISTER MODAL -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+  
+      <img src="img/UL_logo.png" class="modal-logo" alt="Logo">
+  
+      <!-- <h1>REGISTER</h1> -->
+      <p class="subtitle">Create your account</p>
+  
+      <form>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+  
+        <!-- ROLE DROPDOWN -->
+        <select required>
+          <option value="student" selected>Student</option>
+          <option value="counselor">Counselor</option>
+        </select>
+  
+        <!-- ANONYMOUS CHECKBOX 
+        <div class="anonymous-box">
+          <label>
+            <input type="checkbox">
+            Continue Anonymously
+          </label>
+        </div>
+           -->
+        <button type="submit" class="login-btn">REGISTER</button>
+      </form>
+  
+      <p class="signup-text">
+        Already have an account? <a href="#" id="backToLogin">Login</a>
+      </p>
+  
+    </div>
+  </div>
+  
   <!-- JS -->
   <script src="script.js"></script>
 </body>

@@ -44,3 +44,29 @@ window.addEventListener("click", function(e) {
         modal.style.display = "none";
     }
 });
+
+// register
+const signupModal = document.getElementById("signupModal");
+const openSignup = document.getElementById("openSignup");
+const backToLogin = document.getElementById("backToLogin");
+
+// Open signup (from login)
+openSignup.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "none";        // close login
+    signupModal.style.display = "block"; // open signup
+});
+
+// Back to login
+backToLogin.addEventListener("click", function(e) {
+    e.preventDefault();
+    signupModal.style.display = "none";
+    modal.style.display = "block";
+});
+
+// Close signup when clicking outside
+window.addEventListener("click", function(e) {
+    if (e.target === signupModal) {
+        signupModal.style.display = "none";
+    }
+});

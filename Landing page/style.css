@@ -393,3 +393,23 @@ html {
 .signup-text a:hover {
     text-decoration: underline;
 }
+/* SELECT DROPDOWN */
+.modal-content select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #999;
+    font-size: 14px;
+}
+
+/* ANONYMOUS CHECKBOX */
+.anonymous-box {
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.anonymous-box input {
+    margin-right: 5px;
+}
