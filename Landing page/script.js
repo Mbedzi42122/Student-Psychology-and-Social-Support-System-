@@ -26,3 +26,21 @@ function changeBackground() {
 
 // Change every 20 seconds
 setInterval(changeBackground, 20000);
+
+
+// Login modal
+const loginBtn = document.getElementById("loginBtn");
+const modal = document.getElementById("loginModal");
+
+// Open modal
+loginBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+});
+
+// Close when clicking outside
+window.addEventListener("click", function(e) {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
