@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background: #f5f6fa;
+  }
+  
+  /* LAYOUT */
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* SIDEBAR */
+  .sidebar {
+    width: 250px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #ddd;
+  }
+  
+  /* LOGO */
+  .logo {
+    text-align: center;
+    padding: 15px 20px 5px; /* reduced bottom space */
+  }
+  
+  .logo img {
+    width: 80px;
+  }
+  
+  /* MENU */
+  .menu {
+    list-style: none;
+    padding: 5px 10px; /* reduced top space → moves links UP */
+    margin-top: -100px; /* slight push up */
+  }
+  
+  /* MENU ITEM */
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    color: #333;
+  }
+  
+  .menu-item i {
+    width: 20px;
+    text-align: center;
+  }
+  
+  /* HOVER */
+  .menu-item:hover {
+    background: #e4aa7a23;
+  }
+  
+  /* ACTIVE (UPDATED COLOR) */
+  .menu-item.active {
+    background: #e4aa7a;
+    color: white;
+  }
+  
+  /* BOTTOM MENU (UNCHANGED POSITION) */
+  .bottom-menu {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+
+
+  /* 
+  .logout {
+   color: red; 
+  }
+*/ 
+
+
+  /* CONTENT */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* TOP BAR */
+.top-bar {
+    background: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+  
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  /* USER INFO (ICON + TEXT) */
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400; /* NOT BOLD */
+    color: #333;
+  }
+  
+  .user-info i {
+    font-size: 22px;
+    color: #000000; /* matches your theme */
+  }
+  
+  .user-info span {
+    font-size: 15px;
+  }
+  
+  /* MAIN CONTENT */
+  #content-area {
+    padding: 30px;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+  
+    .sidebar {
+      width: 70px;
+    }
+  
+    .menu-item span {
+      display: none;
+    }
+  
+    .menu-item {
+      justify-content: center;
+    }
+  
+    .logo img {
+      width: 50px;
+    }
+  }
