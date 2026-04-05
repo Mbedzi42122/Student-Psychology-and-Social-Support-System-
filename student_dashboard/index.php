@@ -77,7 +77,7 @@ $user_name = $_SESSION['name'];
           <span>Settings</span>
         </div>
       
-        <div class="menu-item logout" onclick="window.location.href='logout.php'">
+        <div class="menu-item logout" onclick="window.location.href='../Logout/logout.php'">
           <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </div>
