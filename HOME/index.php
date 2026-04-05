@@ -37,36 +37,60 @@ if (isset($_POST['register'])) {
 }
 
 // LOGIN
+// LOGIN
 if (isset($_POST['login'])) {
-    $email = trim($_POST['login_email']);
-    $password = $_POST['login_password'];
+  $email = trim($_POST['login_email']);
+  $password = $_POST['login_password'];
 
-    if (empty($email) || empty($password)) {
-        $error = "Both email and password are required for login!";
-    } else {
-        $stmt = $conn->prepare("SELECT user_id, password, role FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($user_id, $hashed_password, $role_db);
+  if (empty($email) || empty($password)) {
+      $error = "Both email and password are required!";
+  } else {
+    $stmt = $conn->prepare("SELECT user_id, name, password, role FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $stmt->store_result();
+      $stmt->bind_result($user_id, $name, $hashed_password, $role_db);
 
-        if ($stmt->num_rows > 0) {
-            $stmt->fetch();
-            if (password_verify($password, $hashed_password)) {
-                session_start();
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['role'] = $role_db;
-                $_SESSION['email'] = $email;
-                $success = "Login successful! Role: $role_db";
-                // Redirect or show dashboard later
-            } else {
-                $error = "Incorrect password!";
-            }
-        } else {
-            $error = "No account found with this email!";
-        }
-    }
+      if ($stmt->num_rows > 0) {
+          $stmt->fetch();
+
+          if (password_verify($password, $hashed_password)) {
+
+              session_start();
+
+              $_SESSION['user_id'] = $user_id;
+              $_SESSION['email'] = $email;
+              $_SESSION['role'] = $role_db;
+              $_SESSION['name'] = $name; 
+              
+
+              //  REDIRECT BASED ON ROLE
+              if ($role_db == 'student') {
+                  header("Location: ../student_dashboard/index.php");
+                  exit();
+              }
+
+              // (optional for later)
+              // elseif ($role_db == 'counsellor') {
+              //     header("Location: ../counsellor_dashboard/index.php");
+              //     exit();
+              // }
+
+              // elseif ($role_db == 'admin') {
+              //     header("Location: ../admin_dashboard/index.php");
+              //     exit();
+              // }
+
+          } else {
+              $error = "Incorrect password!";
+          }
+
+      } else {
+          $error = "No account found!";
+      }
+  }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -236,7 +260,7 @@ if (isset($_POST['login'])) {
         <p style="color:green; font-size:16px;"><?php echo $success; ?></p>
     <?php endif; ?>
 
-    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="name" placeholder="Full Names" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
 

@@ -7,6 +7,7 @@
   
   body {
     background: #f5f6fa;
+    overflow-x: hidden;
   }
   
   /* LAYOUT */
@@ -25,10 +26,9 @@
     border-right: 1px solid #ddd;
   }
   
-  /* LOGO */
   .logo {
     text-align: center;
-    padding: 15px 20px 5px; /* reduced bottom space */
+    padding: 15px 20px 5px;
   }
   
   .logo img {
@@ -38,11 +38,10 @@
   /* MENU */
   .menu {
     list-style: none;
-    padding: 5px 10px; /* reduced top space → moves links UP */
-    margin-top: -100px; /* slight push up */
+    padding: 5px 10px;
+    margin-top: -100px;
   }
   
-  /* MENU ITEM */
   .menu-item {
     display: flex;
     align-items: center;
@@ -60,95 +59,77 @@
     text-align: center;
   }
   
-  /* HOVER */
   .menu-item:hover {
     background: #e4aa7a23;
   }
   
-  /* ACTIVE (UPDATED COLOR) */
   .menu-item.active {
     background: #e4aa7a;
     color: white;
   }
   
-  /* BOTTOM MENU (UNCHANGED POSITION) */
   .bottom-menu {
     padding: 10px;
     border-top: 1px solid #ddd;
   }
   
-
-
-  /* 
-  .logout {
-   color: red; 
-  }
-*/ 
-
-
   /* CONTENT */
   .content {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   
   /* TOP BAR */
-.top-bar {
+  .top-bar {
     background: white;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
-  
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
   
-  /* USER INFO (ICON + TEXT) */
   .user-info {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 400; /* NOT BOLD */
+    font-weight: 400;
     color: #333;
   }
   
   .user-info i {
     font-size: 22px;
-    color: #000000; /* matches your theme */
+    color: #000;
   }
   
   .user-info span {
     font-size: 15px;
   }
   
-  /* MAIN CONTENT */
   #content-area {
     padding: 30px;
   }
   
   /* RESPONSIVE */
   @media (max-width: 768px) {
-  
     .sidebar {
       width: 70px;
     }
-  
     .menu-item span {
       display: none;
     }
-  
     .menu-item {
       justify-content: center;
     }
-  
     .logo img {
       width: 50px;
     }
   }
-
-/* CHAT CONTAINER */
-.chat-container {
+  
+  /* CHAT CONTAINER */
+  .chat-container {
     display: flex;
     flex-direction: column;
     height: 82vh;
@@ -156,9 +137,10 @@
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    max-width: 100%; 
+    overflow: hidden;
   }
   
-  /* HEADER */
   .chat-header {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
@@ -171,18 +153,16 @@
     color: #333;
   }
   
-  /* MESSAGES AREA */
   .chat-messages {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    scroll-behavior: smooth;
   }
   
-  /* MESSAGE BASE */
   .message {
     max-width: 70%;
     padding: 12px 16px;
@@ -191,9 +171,11 @@
     line-height: 1.4;
     position: relative;
     animation: fadeIn 0.2s ease-in;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
   }
   
-  /* USER MESSAGE */
   .message.user {
     align-self: flex-end;
     background: #e4aa7a;
@@ -201,7 +183,6 @@
     border-bottom-right-radius: 4px;
   }
   
-  /* BOT MESSAGE */
   .message.bot {
     align-self: flex-start;
     background: #f1f1f1;
@@ -209,28 +190,36 @@
     border-bottom-left-radius: 4px;
   }
   
-  /* INPUT AREA (FLOAT STYLE) */
+  /* CHAT INPUT */
   .chat-input-area {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     margin-top: 10px;
     background: #f9f9f9;
     border-radius: 12px;
     padding: 8px;
     box-shadow: inset 0 0 0 1px #eee;
+    gap: 10px;
   }
   
-  /* INPUT */
-  .chat-input-area input {
+  .chat-input-area textarea {
     flex: 1;
     border: none;
-    padding: 10px;
     font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 12px;
     outline: none;
     background: transparent;
+    resize: none;
+    overflow: hidden;
+    min-height: 40px;
+    max-height: 120px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
   
-  /* BUTTON */
   .chat-input-area button {
     background: #e4aa7a;
     border: none;
@@ -250,7 +239,7 @@
     transform: scale(1.05);
   }
   
-  /* SCROLLBAR (nice touch) */
+  /* SCROLLBAR */
   .chat-messages::-webkit-scrollbar {
     width: 6px;
   }
@@ -262,12 +251,6 @@
   
   /* ANIMATION */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(5px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
   }

@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+// If not logged in → redirect to home
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../Home/index.php");
+    exit();
+}
+
+// If not a student → block access
+if ($_SESSION['role'] != 'student') {
+    echo "Access denied!";
+    exit();
+}
+
+// Get user info
+$user_name = $_SESSION['name'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +77,7 @@
           <span>Settings</span>
         </div>
       
-        <div class="menu-item logout">
+        <div class="menu-item logout" onclick="window.location.href='logout.php'">
           <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </div>
@@ -72,7 +92,7 @@
     <div class="top-bar">
         <div class="user-info">
           <i class="fas fa-user-circle"></i>
-          <span>Hi, Student</span>
+          <span>Hi, <?php echo htmlspecialchars($user_name); ?></span>
         </div>
       </div>
 
